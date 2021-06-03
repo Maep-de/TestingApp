@@ -86,6 +86,25 @@ namespace TestingApp
 
         }
 
+
+        public void SearchPerson_Subjwise(DataGridView dgv, string Subject)
+        {
+            string sql = @"select ME.Subject,
+                                   CONCAT(P.Name,' ', P.LastName ) PersonName, P.Phone Person_Phone, P.Email Person_mail,
+                                   MI.Name InstitutionName, MI.`E-Mail` Institution_mail, MI.Telefon Institution_Phone, MI.Telefax Institution_fax
+                            from Medical_Education ME
+                            inner join Persons P on P.ID = ME.PERSON_ID
+                            inner join Medical_Institutions MI on MI.ID = ME.Medical_Institution_ID
+                            where ME.Subject = '" + Subject + "' order by ME.Subject asc, P.Name asc;";
+            //and ME.Subject = 'Radiologie'
+
+
+            MySqlCommand cmd = new MySqlCommand(sql);
+
+            config.Load_DTG(sql, dgv);
+
+        }
+
         public void fiil_CBO(ComboBox AdressID)
         {
             string sql = @"select distinct A.ID,CONCAT( A.City, ' ---', A.Street , ' ---', A.ZIP_CODE_ID, ' ---', ZC.ZipCode) AS IDNAME ,
@@ -101,7 +120,15 @@ namespace TestingApp
 
         }
 
-        
+        public void fill_Subject(ComboBox SubjectID)
+        {
+            string sql = @"select distinct ME.Subject, ME.Subject from Medical_Education ME
+                            order by  ME.Subject asc;";
+            MySqlCommand cmd = new MySqlCommand(sql);
+
+            config.fiil_CBO(sql, SubjectID);
+
+        }
         public void callProductData(DataGridView dgv)
         {
             string sql = @"select sel.ID, sel.Name,sel.City,sel.Street, sel.ZipCode, sel.Distance from

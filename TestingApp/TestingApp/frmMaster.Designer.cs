@@ -36,6 +36,7 @@
             this.countToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.institutionWisePersonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.subjectWisePersonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.subjectWisePersonToolStripMenuItemdtl = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,7 +56,8 @@
             this.searchWithDistanceToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.distanceToolStripMenuItem,
             this.personToolStripMenuItem,
-            this.distanceFromPersonToolStripMenuItem});
+            this.distanceFromPersonToolStripMenuItem,
+            this.subjectWisePersonToolStripMenuItemdtl});
             this.searchWithDistanceToolStripMenuItem.Name = "searchWithDistanceToolStripMenuItem";
             this.searchWithDistanceToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
             this.searchWithDistanceToolStripMenuItem.Text = "Search";
@@ -104,6 +106,13 @@
             this.subjectWisePersonToolStripMenuItem.Text = "Subject wise Person";
             this.subjectWisePersonToolStripMenuItem.Click += new System.EventHandler(this.subjectWisePersonToolStripMenuItem_Click);
             // 
+            // subjectWisePersonToolStripMenuItemdtl
+            // 
+            this.subjectWisePersonToolStripMenuItemdtl.Name = "subjectWisePersonToolStripMenuItemdtl";
+            this.subjectWisePersonToolStripMenuItemdtl.Size = new System.Drawing.Size(193, 22);
+            this.subjectWisePersonToolStripMenuItemdtl.Text = "Subject wise Person";
+            this.subjectWisePersonToolStripMenuItemdtl.Click += new System.EventHandler(this.subjectWisePersonToolStripMenuItemdtl_Click);
+            // 
             // frmMaster
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -130,5 +139,6 @@
         private System.Windows.Forms.ToolStripMenuItem countToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem institutionWisePersonToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem subjectWisePersonToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem subjectWisePersonToolStripMenuItemdtl;
     }
 }

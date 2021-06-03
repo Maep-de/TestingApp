@@ -64,5 +64,13 @@ namespace TestingApp
             Form frm = new frm_SubjectWisePerson();
             showForm(frm);
         }
+
+        
+
+        private void subjectWisePersonToolStripMenuItemdtl_Click(object sender, EventArgs e)
+        {
+            Form frm = new frm_SubjectWisePersondtl();
+            showForm(frm);
+        }
     }
 }
