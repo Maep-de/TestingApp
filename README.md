@@ -5,12 +5,12 @@ View Report:
  
 ![Master](https://user-images.githubusercontent.com/57591240/120604604-7d618100-c44d-11eb-8f4f-7087c7c9e454.jpg)
 
-In the First report "Search with Address" have a fixed Address Id(static) to find out nearest other address (calculating with Lat-long)
+In the First report "Search with Address" have a fixed Address Id(static) to find out nearest other Person (calculating with Lat-long)
 
 ![Search_with_distance](https://user-images.githubusercontent.com/57591240/120604703-94a06e80-c44d-11eb-915a-77fa0ea4306b.jpg)
 
 
-In the second report "Search Distance from Address" : we select addresss' City, Street, Zipcode (from drop down list) and give Distance value to find out nearest other address (calculating with Lat-long)
+In the second report "Search Distance from Address" : we select addresss' City, Street, Zipcode (from drop down list) and give Distance value to find out nearest other Person (calculating with Lat-long)
 ![Search_distance_fromAddress](https://user-images.githubusercontent.com/57591240/120604660-88b4ac80-c44d-11eb-89a4-9d5a562a393d.jpg)
 
 
