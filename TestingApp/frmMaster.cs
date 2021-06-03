@@ -36,12 +36,32 @@ namespace TestingApp
         }
         private void distanceToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form frm = new Form1();
+            Form frm = new frmSearchwithDistance();
             showForm(frm);
         }
         private void personToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form frm = new frm_distanceperson();
+            Form frm = new frm_distanceAddress();
+            showForm(frm);
+        }
+
+        
+
+        private void distanceFromPersonToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form frm = new frm_persondistance();
+            showForm(frm);
+        }
+
+        private void institutionWisePersonToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form frm = new frm_InstitutionWisePerson();
+            showForm(frm);
+        }
+
+        private void subjectWisePersonToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form frm = new frm_SubjectWisePerson();
             showForm(frm);
         }
     }

@@ -51,12 +51,50 @@ namespace TestingApp
 
         }
 
+
+        public void SearchProductData(DataGridView dgv, Int32 Addressvalue, Int32 Distance_VALUE)
+        {
+            string sql = @"select distinct CONCAT(Sub.Name,' ',Sub.LastName ) PersonName,Sub.MedName,Sub.Subject, Sub.distance
+                            from
+                            (SELECT  ME.Subject,
+                                   ME.PERSON_ID,
+                                   ME.Medical_Institution_ID,
+                                   MI.Name MedName,
+                                   P.ID,
+                                   P.Name,
+                                   P.LastName,
+                                   PA.Address_ID,
+                                   A.Coordinate,
+                                   Lat_Point.Coordinate LatCoordinate,
+                                   ST_Distance_Sphere(A.Coordinate, Lat_Point.Coordinate) distance
+                            from Medical_Education ME
+                            inner join Medical_Institutions MI on ME.Medical_Institution_ID = MI.ID
+                            inner join Persons P on ME.PERSON_ID = P.ID
+                            inner join Persons_Adresses PA on P.ID = PA.Person_ID
+                            inner join Address A on PA.Address_ID = A.ID
+                            left outer join (select Coordinate from Address
+                                where ID = " + Addressvalue + " )Lat_Point " +
+                                @" on Lat_Point.Coordinate!= A.Coordinate                                  
+                                and A.Coordinate is not null
+                                having ST_Distance_Sphere(A.Coordinate, Lat_Point.Coordinate) < " + Distance_VALUE + " )Sub order by Sub.distance asc;";
+            //and ME.Subject = 'Radiologie'
+
+
+            MySqlCommand cmd = new MySqlCommand(sql);
+
+            config.Load_DTG(sql, dgv);
+
+        }
+
         public void fiil_CBO(ComboBox AdressID)
         {
-            string sql = @"select distinct ID, concat(ID, City, Street, ZIP_CODE_ID) IDNAME, City,Street , ZIP_CODE_ID, Latitude, Longitude
-                            from Address
-                            where Coordinate is not null
-                            order by ZIP_CODE_ID asc, City asc, Street asc;";
+            string sql = @"select distinct A.ID,CONCAT( A.City, ' ---', A.Street , ' ---', A.ZIP_CODE_ID, ' ---', ZC.ZipCode) AS IDNAME ,
+                City,  Street ,  ZIP_CODE_ID,
+                Latitude, Longitude
+                from Address A
+                inner join Zip_Code ZC on A.ZIP_CODE_ID = ZC.ID
+                where Coordinate is not null
+                order by A.ZIP_CODE_ID asc, A.City asc, A.Street asc;";
             MySqlCommand cmd = new MySqlCommand(sql);
 
             config.fiil_CBO(sql, AdressID);
@@ -86,8 +124,38 @@ namespace TestingApp
 
         }
 
-     
 
+        public void callPersonList(DataGridView dgv)
+        {
+            string sql = @"select  MI.Name InstitutionName, count(P.ID) TotalPerson
+                            from Medical_Institutions MI
+                            inner join Medical_Education ME on MI.ID = ME.Medical_Institution_ID
+                            inner join Persons P on P.ID = ME.PERSON_ID
+                            group by   MI.Name
+                            order by  MI.Name asc;";
+
+
+            MySqlCommand cmd = new MySqlCommand(sql);
+
+            config.Load_DTG(sql, dgv);
+
+        }
+
+
+        public void callPersonSubjwise(DataGridView dgv)
+        {
+            string sql = @"select distinct ME.Subject , count(P.ID) TotalPerson
+                            from Medical_Education ME
+                            inner join Persons P on P.ID = ME.PERSON_ID
+                            group by  ME.Subject
+                            order by  ME.Subject asc;";
+
+
+            MySqlCommand cmd = new MySqlCommand(sql);
+
+            config.Load_DTG(sql, dgv);
+
+        }
 
     }
 

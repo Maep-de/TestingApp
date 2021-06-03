@@ -32,16 +32,21 @@
             this.searchWithDistanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.distanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.personToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.distanceFromPersonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.countToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.institutionWisePersonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.subjectWisePersonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.searchWithDistanceToolStripMenuItem});
+            this.searchWithDistanceToolStripMenuItem,
+            this.countToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1030, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -49,30 +54,61 @@
             // 
             this.searchWithDistanceToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.distanceToolStripMenuItem,
-            this.personToolStripMenuItem});
+            this.personToolStripMenuItem,
+            this.distanceFromPersonToolStripMenuItem});
             this.searchWithDistanceToolStripMenuItem.Name = "searchWithDistanceToolStripMenuItem";
-            this.searchWithDistanceToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
-            this.searchWithDistanceToolStripMenuItem.Text = "Search on";
+            this.searchWithDistanceToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
+            this.searchWithDistanceToolStripMenuItem.Text = "Search";
             // 
             // distanceToolStripMenuItem
             // 
             this.distanceToolStripMenuItem.Name = "distanceToolStripMenuItem";
-            this.distanceToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.distanceToolStripMenuItem.Text = "Distance";
+            this.distanceToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
+            this.distanceToolStripMenuItem.Text = "with Distance";
             this.distanceToolStripMenuItem.Click += new System.EventHandler(this.distanceToolStripMenuItem_Click);
             // 
             // personToolStripMenuItem
             // 
             this.personToolStripMenuItem.Name = "personToolStripMenuItem";
-            this.personToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.personToolStripMenuItem.Text = "Person";
+            this.personToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
+            this.personToolStripMenuItem.Text = "Distance from Address";
             this.personToolStripMenuItem.Click += new System.EventHandler(this.personToolStripMenuItem_Click);
+            // 
+            // distanceFromPersonToolStripMenuItem
+            // 
+            this.distanceFromPersonToolStripMenuItem.Name = "distanceFromPersonToolStripMenuItem";
+            this.distanceFromPersonToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
+            this.distanceFromPersonToolStripMenuItem.Text = "Distance from Person";
+            this.distanceFromPersonToolStripMenuItem.Click += new System.EventHandler(this.distanceFromPersonToolStripMenuItem_Click);
+            // 
+            // countToolStripMenuItem
+            // 
+            this.countToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.institutionWisePersonToolStripMenuItem,
+            this.subjectWisePersonToolStripMenuItem});
+            this.countToolStripMenuItem.Name = "countToolStripMenuItem";
+            this.countToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
+            this.countToolStripMenuItem.Text = "Count";
+            // 
+            // institutionWisePersonToolStripMenuItem
+            // 
+            this.institutionWisePersonToolStripMenuItem.Name = "institutionWisePersonToolStripMenuItem";
+            this.institutionWisePersonToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
+            this.institutionWisePersonToolStripMenuItem.Text = "Institution wise Person";
+            this.institutionWisePersonToolStripMenuItem.Click += new System.EventHandler(this.institutionWisePersonToolStripMenuItem_Click);
+            // 
+            // subjectWisePersonToolStripMenuItem
+            // 
+            this.subjectWisePersonToolStripMenuItem.Name = "subjectWisePersonToolStripMenuItem";
+            this.subjectWisePersonToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
+            this.subjectWisePersonToolStripMenuItem.Text = "Subject wise Person";
+            this.subjectWisePersonToolStripMenuItem.Click += new System.EventHandler(this.subjectWisePersonToolStripMenuItem_Click);
             // 
             // frmMaster
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1030, 497);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "frmMaster";
@@ -90,5 +126,9 @@
         private System.Windows.Forms.ToolStripMenuItem searchWithDistanceToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem distanceToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem personToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem distanceFromPersonToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem countToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem institutionWisePersonToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem subjectWisePersonToolStripMenuItem;
     }
 }
