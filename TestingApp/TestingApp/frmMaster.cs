@@ -72,5 +72,29 @@ namespace TestingApp
             Form frm = new frm_SubjectWisePersondtl();
             showForm(frm);
         }
+
+        private void bedsQuantityForDeptToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form frm = new frm_DepartmentwiseBeds();
+            showForm(frm);
+        }
+
+        private void articlesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form frm = new frm_PublishArticle();
+            showForm(frm);
+        }
+
+        private void articlePublicationCurrentWebpageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form frm = new frm_PublishArticleOld();
+            showForm(frm);
+        }
+
+        private void withSpecializationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+           // Form frm = new frm_HospitalwithSpec();
+          //  showForm(frm);
+        }
     }
 }
