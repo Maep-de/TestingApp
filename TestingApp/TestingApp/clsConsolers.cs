@@ -27,7 +27,11 @@ namespace TestingApp
 
         usableFunction funct = new usableFunction();
         public DataTable dt;
-        
+
+        // private MySqlConnection con = new MySqlConnection("server=screenfx.de;user=d036c030;database=d036c030;port=3306;password=g5ZReBPD2ADDXT6V");
+       // private MySqlConnection con = new MySqlConnection("server=screenfx.de;user=d036c030;database=d036c030;port=3306;password=g5ZReBPD2ADDXT6V");
+       // MySqlDataReader reader;
+
         //VIEW PRODUCT
         public void callProductData(DataGridView dgv, Int32 Distance_VALUE)
         {
@@ -87,6 +91,38 @@ namespace TestingApp
         //}
 
 
+        public void SearchMedicalInstitution(DataGridView dgv, Int32 Addressvalue, Int32 Distance_VALUE)
+        {
+            string sql = @"select distinct MI.Name Medical_Ins_Name,
+                               MI.Name_2 Details,
+                               MI.Phone,
+                               MI.Email,
+                               MI.Fax,
+                               MI.Street,
+                               MI.City,
+                               MI.ZipCode,
+                               MI.Country,
+                               MI.Latitude,
+                               MI.Longitude,A.Coordinate, Lat_Point.Coordinate,
+                        ST_Distance_Sphere(A.Coordinate, Lat_Point.Coordinate) distance
+                        from Medical_Institutions MI
+                        inner  join Locations L on L.MED_INST_ID = MI.ID
+                        inner  join Address A on L.ADDRESS_ID = A.ID
+                        left outer join (select Coordinate from Address
+                                                        where ID = " + Addressvalue + "  )Lat_Point"+
+                                                        @"on Lat_Point.Coordinate != A.Coordinate and
+                                                         A.Coordinate is not null
+                         having ST_Distance_Sphere(A.Coordinate, Lat_Point.Coordinate) < " + Distance_VALUE + ";";
+            //and ME.Subject = 'Radiologie'
+
+
+            MySqlCommand cmd = new MySqlCommand(sql);
+
+            config.Load_DTG(sql, dgv);
+
+        }
+
+       
         public void SearchProductData(DataGridView dgv, Int32 Addressvalue, Int32 Distance_VALUE)
         {
             string sql = @"select distinct CONCAT(Sub.Name,' ',Sub.LastName ) PersonName,Sub.MedName,Sub.Subject, Sub.distance
@@ -137,6 +173,7 @@ namespace TestingApp
 
             MySqlCommand cmd = new MySqlCommand(sql);
 
+
             config.Load_DTG(sql, dgv);
 
         }
@@ -185,6 +222,28 @@ namespace TestingApp
 
         }
 
+
+        public void fill_City_All(ComboBox City)
+        {
+            string sql = @"Select distinct MI.City, MI.City from Medical_Institutions MI
+                                where Coordinate is not null
+                                ORDER BY City asc;";
+            MySqlCommand cmd = new MySqlCommand(sql);
+
+            config.combo(sql, City);
+
+        }
+        public void fill_Address_New(ComboBox Adress, string CityName)
+        {
+            string sql = @"Select distinct CONCAT(MI.Street , ' ---', MI.ZipCode) AS IDNAME,MI.ZipCode
+                            from  Medical_Institutions MI
+                            where Coordinate is not null
+                            and City ='" + CityName + "' order by MI.ZipCode asc;";
+            MySqlCommand cmd = new MySqlCommand(sql);
+
+            config.combo(sql, Adress);
+
+        }
         public void fill_Address(ComboBox Adress, string CityName)
         {
             string sql = @"Select distinct CONCAT(A.Street , ' ---', A.ZipCode) AS IDNAME,A.ZipCode
@@ -194,6 +253,71 @@ namespace TestingApp
             MySqlCommand cmd = new MySqlCommand(sql);
 
             config.combo(sql, Adress);
+
+        }
+
+        public void fix_Address_ID(ComboBox Adress, string CityName, string Street_Zipcode)
+        {
+            string sql = @"select distinct ID, ID from Medical_Institutions MI
+                            where CONCAT(MI.Street , ' ---', MI.ZipCode) ='" + Street_Zipcode + "' and City = '" + CityName + "' and Coordinate is not null LIMIT 1;";
+            MySqlCommand cmd = new MySqlCommand(sql);
+
+            config.combo(sql, Adress);
+
+        }
+
+
+        public int GetMedical_ID(string CityName, string Street_Zipcode)
+        {
+            int getReceiptNum = 0;
+
+            try
+            {
+                string sql = @"select distinct ID, ID from Medical_Institutions MI
+                            where CONCAT(MI.Street , ' ---', MI.ZipCode) ='" + Street_Zipcode + "' and City = '" + CityName + "' and Coordinate is not null LIMIT 1;";
+
+                //con.Open();
+                //MySqlCommand cmd = new MySqlCommand(sql);
+                getReceiptNum = config.GetMedical_ID(sql);
+                
+                //reader = cmd.ExecuteReader();
+                //while (reader.Read())
+                //{
+                //    getReceiptNum = Int16.Parse(reader["ID"].ToString());
+                //}
+
+                //con.Close();
+
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            return getReceiptNum;
+            //try
+            //{
+            //    //string dbPath = @"Data Source=SONY\MSSQLSERVER00V1;Initial Catalog=dbOHMS;Integrated Security=True";
+            //    string sql = "select genReceiptNo from GenReceipt where genReceiptNo = (select max(genReceiptNo) from GenReceipt)";
+
+            //    SqlConnection con = new SqlConnection(dbPath);
+            //    con.Open();
+            //    SqlCommand cmd = new SqlCommand(sql, con);
+
+            //    reader = cmd.ExecuteReader();
+            //    while (reader.Read())
+            //    {
+            //        getReceiptNum = Int16.Parse(reader["genReceiptNo"].ToString());
+            //    }
+
+            //}
+
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+            //}
+            //return getReceiptNum + 1;
 
         }
 

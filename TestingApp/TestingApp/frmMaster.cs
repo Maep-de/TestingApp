@@ -96,5 +96,11 @@ namespace TestingApp
            // Form frm = new frm_HospitalwithSpec();
           //  showForm(frm);
         }
+
+        private void medicalInstitutionFromAddressToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form frm = new frmMedicalInsAddress();
+            showForm(frm);
+        }
     }
 }

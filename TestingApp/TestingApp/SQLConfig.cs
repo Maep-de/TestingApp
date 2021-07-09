@@ -17,8 +17,11 @@ namespace TestingApp
         private MySqlConnection con = new MySqlConnection("server=screenfx.de;user=d036c030;database=d036c030;port=3306;password=g5ZReBPD2ADDXT6V");
         private MySqlCommand cmd;
         private MySqlDataAdapter da;
-        public DataTable dt; 
+        public DataTable dt;
+        MySqlDataReader reader;
+
         int result;
+        int getReceiptNum;
         usableFunction funct = new usableFunction();
         public void Execute_CUD(string sql, string msg_false, string msg_true)
         {
@@ -162,7 +165,7 @@ namespace TestingApp
                 da = new MySqlDataAdapter();
                 dt = new DataTable();
 
-
+                
                 cmd.Connection = con;
                 cmd.CommandText = sql;
                 da.SelectCommand = cmd;
@@ -318,7 +321,39 @@ namespace TestingApp
             Execute_Query("UPDATE `tblautonumber` SET `END`=`END`+`INCREMENT` WHERE `DESCRIPTION`='" + id + "'");
         }
        
+        public int GetMedical_ID(string sql)
+        {
 
+            try
+            {
+               // cmd = new MySqlCommand();
+                con.Open();
+                cmd = new MySqlCommand();
+                da = new MySqlDataAdapter();
+                //dt = new DataTable();
+
+
+                cmd.Connection = con;
+                cmd.CommandText = sql;
+                da.SelectCommand = cmd;
+                da.Fill(dt);
+
+
+                reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    getReceiptNum = Int16.Parse(reader["ID"].ToString());
+                }
+
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return getReceiptNum;
+
+        }
 
     }
 }
