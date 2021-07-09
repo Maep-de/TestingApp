@@ -93,7 +93,7 @@ namespace TestingApp
 
         public void SearchMedicalInstitution(DataGridView dgv, Int32 Addressvalue, Int32 Distance_VALUE)
         {
-            string sql = @"select distinct MI.Name Medical_Ins_Name,
+            string sql = @"select Medical_Ins_Name, Details, Phone, Email, Fax, City, Street, ZipCode, distance from (select distinct MI.Name Medical_Ins_Name,
                                MI.Name_2 Details,
                                MI.Phone,
                                MI.Email,
@@ -103,16 +103,16 @@ namespace TestingApp
                                MI.ZipCode,
                                MI.Country,
                                MI.Latitude,
-                               MI.Longitude,A.Coordinate, Lat_Point.Coordinate,
+                               MI.Longitude,A.Coordinate, Lat_Point.Coordinate Lat_Coordinate,
                         ST_Distance_Sphere(A.Coordinate, Lat_Point.Coordinate) distance
                         from Medical_Institutions MI
                         inner  join Locations L on L.MED_INST_ID = MI.ID
                         inner  join Address A on L.ADDRESS_ID = A.ID
-                        left outer join (select Coordinate from Address
-                                                        where ID = " + Addressvalue + "  )Lat_Point"+
-                                                        @"on Lat_Point.Coordinate != A.Coordinate and
+                        left outer join (select Coordinate from Medical_Institutions
+                                                        where ID = " + Addressvalue + "  )Lat_Point "+
+                                                        @" on Lat_Point.Coordinate != A.Coordinate and
                                                          A.Coordinate is not null
-                         having ST_Distance_Sphere(A.Coordinate, Lat_Point.Coordinate) < " + Distance_VALUE + ";";
+                         having ST_Distance_Sphere(A.Coordinate, Lat_Point.Coordinate) < " + Distance_VALUE + ")Sub order by Sub.distance asc; ";
             //and ME.Subject = 'Radiologie'
 
 
@@ -238,7 +238,7 @@ namespace TestingApp
             string sql = @"Select distinct CONCAT(MI.Street , ' ---', MI.ZipCode) AS IDNAME,MI.ZipCode
                             from  Medical_Institutions MI
                             where Coordinate is not null
-                            and City ='" + CityName + "' order by MI.ZipCode asc;";
+                            and City ='" + CityName + "' order by MI.Street asc;";
             MySqlCommand cmd = new MySqlCommand(sql);
 
             config.combo(sql, Adress);
@@ -266,7 +266,17 @@ namespace TestingApp
 
         }
 
+        public DataTable GetMedical_ID_data(string CityName, string Street_Zipcode)
+        {
+            string sql = @"select distinct ID, ID from Medical_Institutions MI
+                            where CONCAT(MI.Street , ' ---', MI.ZipCode) ='" + Street_Zipcode + "' and City = '" + CityName + "' and Coordinate is not null LIMIT 1;";
 
+            MySqlCommand cmd = new MySqlCommand(sql);
+
+            //config.fiil_CBO(sql, SubjectID);
+
+            return config.get_viewData(sql, "Medical");
+        }
         public int GetMedical_ID(string CityName, string Street_Zipcode)
         {
             int getReceiptNum = 0;

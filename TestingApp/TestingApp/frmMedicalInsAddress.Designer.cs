@@ -37,6 +37,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.ddlAdressID = new System.Windows.Forms.ComboBox();
+            this.lblAddressID = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.lstTeachers)).BeginInit();
             this.SuspendLayout();
             // 
@@ -57,7 +58,7 @@
             this.ddlCity.Name = "ddlCity";
             this.ddlCity.Size = new System.Drawing.Size(300, 21);
             this.ddlCity.TabIndex = 18;
-            this.ddlCity.SelectedIndexChanged += new System.EventHandler(this.ddlCity_SelectedIndexChanged_1);
+            this.ddlCity.SelectedIndexChanged += new System.EventHandler(this.ddlCity_SelectedIndexChanged);
             // 
             // label5
             // 
@@ -83,7 +84,7 @@
             this.lstTeachers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.lstTeachers.Location = new System.Drawing.Point(22, 149);
             this.lstTeachers.Name = "lstTeachers";
-            this.lstTeachers.Size = new System.Drawing.Size(818, 364);
+            this.lstTeachers.Size = new System.Drawing.Size(1145, 364);
             this.lstTeachers.TabIndex = 15;
             // 
             // btnSearch
@@ -93,7 +94,7 @@
             this.btnSearch.Size = new System.Drawing.Size(75, 23);
             this.btnSearch.TabIndex = 14;
             this.btnSearch.Text = "Search";
-            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // label2
             // 
@@ -123,11 +124,22 @@
             this.ddlAdressID.TabIndex = 11;
             this.ddlAdressID.SelectedIndexChanged += new System.EventHandler(this.ddlAdressID_SelectedIndexChanged);
             // 
+            // lblAddressID
+            // 
+            this.lblAddressID.AutoSize = true;
+            this.lblAddressID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAddressID.Location = new System.Drawing.Point(396, 120);
+            this.lblAddressID.Name = "lblAddressID";
+            this.lblAddressID.Size = new System.Drawing.Size(72, 16);
+            this.lblAddressID.TabIndex = 20;
+            this.lblAddressID.Text = "AddressID";
+            // 
             // frmMedicalInsAddress
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(867, 532);
+            this.ClientSize = new System.Drawing.Size(1178, 532);
+            this.Controls.Add(this.lblAddressID);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.ddlCity);
             this.Controls.Add(this.label5);
@@ -156,5 +168,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox ddlAdressID;
+        private System.Windows.Forms.Label lblAddressID;
     }
 }

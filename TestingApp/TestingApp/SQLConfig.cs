@@ -113,7 +113,22 @@ namespace TestingApp
 
         }
 
-        
+        public DataTable get_viewData(string query, string tableName)
+        {
+            DataSet ds = new DataSet();
+            da = new MySqlDataAdapter(query, con);
+            try
+            {
+                con.Open();
+                da.Fill(ds, "" + tableName);
+            }
+            catch (Exception e)
+            {
+                ds.Tables.Add("" + tableName);
+            }
+            finally { con.Close(); }
+            return ds.Tables["" + tableName];
+        }
         public void fiil_CBO(string sql, ComboBox cbo)
         {
             try
