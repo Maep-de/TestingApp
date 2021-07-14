@@ -351,15 +351,15 @@ namespace TestingApp
         }
 
 
-        public void InsertIntoArticle(int ArticleTypeID, string title,string HeadlineText, string Details, string date, string crntdate)
+        public void InsertIntoArticle(int ArticleTypeID, string title,string HeadlineText, string Content, string date, string crntdate)
         {
             try
             {
                 string messageTrue, messageFalse;
-
-                //  string dbPath = @"Data Source=SONY\MSSQLSERVER00V1;Initial Catalog=dbOHMS;Integrated Security=True";
-                string sql = @"insert into Article (ArticleTypeID, Header, HeadlineText ,Details, eventdate, CreatedAt) 
-                    values(" + ArticleTypeID + ",'" + title + "', '" + HeadlineText + "','" + Details + "','" + date + "' ,'" + crntdate + "'   )";
+                //Content = details
+                //add VisibleFromDate,, VisibleDuration later; VisibleFromDate = from which date Blog willbe visible(date type), VisibleDuration = how long the article will be viewed
+                string sql = @"insert into Article (ArticleTypeID, Header, HeadlineText , Content, eventdate, CreatedAt) 
+                    values(" + ArticleTypeID + ",'" + title + "', '" + HeadlineText + "','" + Content + "','" + date + "' ,'" + crntdate + "'   )";
                 MySqlCommand cmd = new MySqlCommand(sql);
 
                 messageTrue = "Article has been saved.";
