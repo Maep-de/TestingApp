@@ -11,16 +11,44 @@ using System.Windows.Forms;
 namespace TestingApp
 {
     
-    public partial class frmMedicalInsAddress : Form
+    public partial class frm_Person_distanceAddress : Form
     {
         clsConsolers clsConsole = new clsConsolers();
-        public frmMedicalInsAddress()
+
+        public frm_Person_distanceAddress()
         {
             InitializeComponent();
             clsConsole.fill_City_All(ddlCity);
+            // clsConsole.fiil_CBO(ddlAdressID);
         }
 
+        //private void button1_Click(object sender, EventArgs e)
+        //{
+        //    // string value = ddlAdressID.SelectedItem.ToString();
+        //    label3.Text = ddlAdressID.SelectedValue.ToString();
+        //    label4.Text = ddlAdressID.SelectedItem.ToString()+"-item-"+
+        //        ddlAdressID.SelectedIndex.ToString() + "-index-" + ddlAdressID.SelectedText.ToString()
+        //        + "-text-";
 
+        //}
+
+        
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            string City = ddlCity.SelectedItem.ToString();
+            int Addressvalue = Convert.ToInt32(lblAddressID.Text);
+
+
+            //int Addressvalue = 0;
+            int value = Convert.ToInt32(txtValue.Text);
+
+            if (ddlCity.SelectedItem.ToString() != "Select" && value > 0)
+            {
+                clsConsole.SearchProductData(lstTeachers, Addressvalue, value);
+            }
+            
+        }
 
         private void ddlCity_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -28,6 +56,10 @@ namespace TestingApp
             clsConsole.fill_Address_New(ddlAdressID, City);
         }
 
+        private void frm_Person_distanceAddress_Load(object sender, EventArgs e)
+        {
+
+        }
 
         private void ddlAdressID_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -44,25 +76,6 @@ namespace TestingApp
             }
 
             lblAddressID.Text = Convert.ToString(Address_ID);
-
         }
-
-        
-
-        private void btnSearch_Click(object sender, EventArgs e)
-        {
-            int Distance = Convert.ToInt32(txtValue.Text);
-            int Addressvalue = Convert.ToInt32(lblAddressID.Text);  //ddlAdressID.SelectedItem.ToString();
-
-            //int Addressvalue = 0;
-            // int value = Convert.ToInt32(txtValue.Text);
-
-            if (ddlCity.SelectedItem.ToString() != "Select" && Distance > 0)
-            {
-                clsConsole.SearchMedicalInstitution(lstTeachers, Addressvalue, Distance);
-            }
-        }
-
-       
     }
 }

@@ -30,11 +30,12 @@
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.searchWithDistanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.distanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.personToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.medicalInstitutionFromAddressToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.distanceFromPersonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.personToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.subjectWisePersonToolStripMenuItemdtl = new System.Windows.Forms.ToolStripMenuItem();
             this.bedsQuantityForDeptToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.distanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.countToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.institutionWisePersonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.subjectWisePersonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -43,7 +44,7 @@
             this.articlePublicationCurrentWebpageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.searchDoctorWithSpecializationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.withSpecializationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.medicalInstitutionFromAddressToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.personsUnderMedicalEducationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -64,49 +65,57 @@
             // 
             this.searchWithDistanceToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.medicalInstitutionFromAddressToolStripMenuItem,
-            this.distanceFromPersonToolStripMenuItem,
             this.personToolStripMenuItem,
+            this.distanceFromPersonToolStripMenuItem,
             this.subjectWisePersonToolStripMenuItemdtl,
             this.bedsQuantityForDeptToolStripMenuItem,
-            this.distanceToolStripMenuItem});
+            this.distanceToolStripMenuItem,
+            this.personsUnderMedicalEducationToolStripMenuItem});
             this.searchWithDistanceToolStripMenuItem.Name = "searchWithDistanceToolStripMenuItem";
             this.searchWithDistanceToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
             this.searchWithDistanceToolStripMenuItem.Text = "Search";
             // 
-            // distanceToolStripMenuItem
+            // medicalInstitutionFromAddressToolStripMenuItem
             // 
-            this.distanceToolStripMenuItem.Name = "distanceToolStripMenuItem";
-            this.distanceToolStripMenuItem.Size = new System.Drawing.Size(247, 22);
-            this.distanceToolStripMenuItem.Text = "with Distance";
-            this.distanceToolStripMenuItem.Click += new System.EventHandler(this.distanceToolStripMenuItem_Click);
-            // 
-            // personToolStripMenuItem
-            // 
-            this.personToolStripMenuItem.Name = "personToolStripMenuItem";
-            this.personToolStripMenuItem.Size = new System.Drawing.Size(247, 22);
-            this.personToolStripMenuItem.Text = "Distance from Address";
-            this.personToolStripMenuItem.Click += new System.EventHandler(this.personToolStripMenuItem_Click);
+            this.medicalInstitutionFromAddressToolStripMenuItem.Name = "medicalInstitutionFromAddressToolStripMenuItem";
+            this.medicalInstitutionFromAddressToolStripMenuItem.Size = new System.Drawing.Size(252, 22);
+            this.medicalInstitutionFromAddressToolStripMenuItem.Text = "Medical Institution from Address";
+            this.medicalInstitutionFromAddressToolStripMenuItem.Click += new System.EventHandler(this.medicalInstitutionFromAddressToolStripMenuItem_Click);
             // 
             // distanceFromPersonToolStripMenuItem
             // 
             this.distanceFromPersonToolStripMenuItem.Name = "distanceFromPersonToolStripMenuItem";
-            this.distanceFromPersonToolStripMenuItem.Size = new System.Drawing.Size(247, 22);
+            this.distanceFromPersonToolStripMenuItem.Size = new System.Drawing.Size(252, 22);
             this.distanceFromPersonToolStripMenuItem.Text = "Distance from Person";
             this.distanceFromPersonToolStripMenuItem.Click += new System.EventHandler(this.distanceFromPersonToolStripMenuItem_Click);
+            // 
+            // personToolStripMenuItem
+            // 
+            this.personToolStripMenuItem.Name = "personToolStripMenuItem";
+            this.personToolStripMenuItem.Size = new System.Drawing.Size(252, 22);
+            this.personToolStripMenuItem.Text = "Persons around Fixed Address";
+            this.personToolStripMenuItem.Click += new System.EventHandler(this.personToolStripMenuItem_Click);
             // 
             // subjectWisePersonToolStripMenuItemdtl
             // 
             this.subjectWisePersonToolStripMenuItemdtl.Name = "subjectWisePersonToolStripMenuItemdtl";
-            this.subjectWisePersonToolStripMenuItemdtl.Size = new System.Drawing.Size(247, 22);
+            this.subjectWisePersonToolStripMenuItemdtl.Size = new System.Drawing.Size(252, 22);
             this.subjectWisePersonToolStripMenuItemdtl.Text = "Subject wise Person";
             this.subjectWisePersonToolStripMenuItemdtl.Click += new System.EventHandler(this.subjectWisePersonToolStripMenuItemdtl_Click);
             // 
             // bedsQuantityForDeptToolStripMenuItem
             // 
             this.bedsQuantityForDeptToolStripMenuItem.Name = "bedsQuantityForDeptToolStripMenuItem";
-            this.bedsQuantityForDeptToolStripMenuItem.Size = new System.Drawing.Size(247, 22);
+            this.bedsQuantityForDeptToolStripMenuItem.Size = new System.Drawing.Size(252, 22);
             this.bedsQuantityForDeptToolStripMenuItem.Text = "Beds quantity for Dept";
             this.bedsQuantityForDeptToolStripMenuItem.Click += new System.EventHandler(this.bedsQuantityForDeptToolStripMenuItem_Click);
+            // 
+            // distanceToolStripMenuItem
+            // 
+            this.distanceToolStripMenuItem.Name = "distanceToolStripMenuItem";
+            this.distanceToolStripMenuItem.Size = new System.Drawing.Size(252, 22);
+            this.distanceToolStripMenuItem.Text = "with Distance";
+            this.distanceToolStripMenuItem.Click += new System.EventHandler(this.distanceToolStripMenuItem_Click);
             // 
             // countToolStripMenuItem
             // 
@@ -165,16 +174,16 @@
             // withSpecializationToolStripMenuItem
             // 
             this.withSpecializationToolStripMenuItem.Name = "withSpecializationToolStripMenuItem";
-            this.withSpecializationToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.withSpecializationToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.withSpecializationToolStripMenuItem.Text = "with Specialization";
             this.withSpecializationToolStripMenuItem.Click += new System.EventHandler(this.withSpecializationToolStripMenuItem_Click);
             // 
-            // medicalInstitutionFromAddressToolStripMenuItem
+            // personsUnderMedicalEducationToolStripMenuItem
             // 
-            this.medicalInstitutionFromAddressToolStripMenuItem.Name = "medicalInstitutionFromAddressToolStripMenuItem";
-            this.medicalInstitutionFromAddressToolStripMenuItem.Size = new System.Drawing.Size(247, 22);
-            this.medicalInstitutionFromAddressToolStripMenuItem.Text = "Medical Institution from Address";
-            this.medicalInstitutionFromAddressToolStripMenuItem.Click += new System.EventHandler(this.medicalInstitutionFromAddressToolStripMenuItem_Click);
+            this.personsUnderMedicalEducationToolStripMenuItem.Name = "personsUnderMedicalEducationToolStripMenuItem";
+            this.personsUnderMedicalEducationToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
+            this.personsUnderMedicalEducationToolStripMenuItem.Text = "Persons under Medical Education";
+            this.personsUnderMedicalEducationToolStripMenuItem.Click += new System.EventHandler(this.personsUnderMedicalEducationToolStripMenuItem_Click);
             // 
             // frmMaster
             // 
@@ -210,5 +219,6 @@
         private System.Windows.Forms.ToolStripMenuItem searchDoctorWithSpecializationToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem withSpecializationToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem medicalInstitutionFromAddressToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem personsUnderMedicalEducationToolStripMenuItem;
     }
 }

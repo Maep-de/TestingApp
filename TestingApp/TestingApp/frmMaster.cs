@@ -41,7 +41,7 @@ namespace TestingApp
         }
         private void personToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form frm = new frm_distanceAddress();
+            Form frm = new frm_Person_distanceAddress();
             showForm(frm);
         }
 
@@ -100,6 +100,14 @@ namespace TestingApp
         private void medicalInstitutionFromAddressToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form frm = new frmMedicalInsAddress();
+            showForm(frm);
+        }
+
+       
+
+        private void personsUnderMedicalEducationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form frm = new frm_PersonUnderME();
             showForm(frm);
         }
     }

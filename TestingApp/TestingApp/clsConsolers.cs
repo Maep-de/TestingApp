@@ -125,16 +125,16 @@ namespace TestingApp
        
         public void SearchProductData(DataGridView dgv, Int32 Addressvalue, Int32 Distance_VALUE)
         {
-            string sql = @"select distinct CONCAT(Sub.Name,' ',Sub.LastName ) PersonName,Sub.MedName,Sub.Subject, Sub.distance
+            string sql = @"select distinct CONCAT(Sub.Title,' ',Sub.FirstName,' ',Sub.LastName ) PersonName,Sub.MedName,Sub.Subject, Sub.distance
                             from
                             (SELECT  ME.Subject,
                                    ME.PERSON_ID,
                                    ME.Medical_Institution_ID,
                                    MI.Name MedName,
-                                   P.ID,
+                                   P.ID PID,
                                    P.Title,P.FirstName,
                                    P.LastName,
-                                   A.ID,
+                                   A.ID AID,
                                    A.Coordinate,
                                    Lat_Point.Coordinate LatCoordinate,
                                    ST_Distance_Sphere(A.Coordinate, Lat_Point.Coordinate) distance
@@ -234,6 +234,18 @@ namespace TestingApp
 
         }
         public void fill_Address_New(ComboBox Adress, string CityName)
+        {
+            string sql = @"Select distinct CONCAT(MI.Street , ' ---', MI.ZipCode) AS IDNAME,MI.ZipCode
+                            from  Medical_Institutions MI
+                            where Coordinate is not null
+                            and City ='" + CityName + "' order by MI.Street asc;";
+            MySqlCommand cmd = new MySqlCommand(sql);
+
+            config.combo(sql, Adress);
+
+        }
+
+        public void fill_Institution(ComboBox Adress, string CityName)
         {
             string sql = @"Select distinct CONCAT(MI.Street , ' ---', MI.ZipCode) AS IDNAME,MI.ZipCode
                             from  Medical_Institutions MI

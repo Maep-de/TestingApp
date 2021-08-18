@@ -10,24 +10,20 @@ using System.Windows.Forms;
 
 namespace TestingApp
 {
-    
-    public partial class frmMedicalInsAddress : Form
+    public partial class frm_PersonUnderME : Form
     {
         clsConsolers clsConsole = new clsConsolers();
-        public frmMedicalInsAddress()
+        public frm_PersonUnderME()
         {
             InitializeComponent();
             clsConsole.fill_City_All(ddlCity);
         }
-
-
 
         private void ddlCity_SelectedIndexChanged(object sender, EventArgs e)
         {
             string City = ddlCity.SelectedItem.ToString();
             clsConsole.fill_Address_New(ddlAdressID, City);
         }
-
 
         private void ddlAdressID_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -45,24 +41,23 @@ namespace TestingApp
 
             lblAddressID.Text = Convert.ToString(Address_ID);
 
-        }
 
-        
+            string AdressID = Convert.ToString(Address_ID);
+            clsConsole.fill_Institution(ddlInstitution, AdressID);
+        }
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            int Distance = Convert.ToInt32(txtValue.Text);
+            int Distance = Convert.ToInt32(ddlInstitution.SelectedValue.ToString());
             int Addressvalue = Convert.ToInt32(lblAddressID.Text);  //ddlAdressID.SelectedItem.ToString();
 
             //int Addressvalue = 0;
             // int value = Convert.ToInt32(txtValue.Text);
 
-            if (ddlCity.SelectedItem.ToString() != "Select" && Distance > 0)
+            if (ddlCity.SelectedItem.ToString() != "Select" && ddlInstitution.SelectedItem.ToString() != "Select")
             {
                 clsConsole.SearchMedicalInstitution(lstTeachers, Addressvalue, Distance);
             }
         }
-
-       
     }
 }

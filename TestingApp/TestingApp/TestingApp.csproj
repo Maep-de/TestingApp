@@ -94,11 +94,17 @@
     <Compile Include="frm_DepartmentwiseBeds.Designer.cs">
       <DependentUpon>frm_DepartmentwiseBeds.cs</DependentUpon>
     </Compile>
-    <Compile Include="frm_distanceAddress.cs">
+    <Compile Include="frm_PersonUnderME.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_distanceAddress.Designer.cs">
-      <DependentUpon>frm_distanceAddress.cs</DependentUpon>
+    <Compile Include="frm_PersonUnderME.Designer.cs">
+      <DependentUpon>frm_PersonUnderME.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_Person_distanceAddress.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_Person_distanceAddress.Designer.cs">
+      <DependentUpon>frm_Person_distanceAddress.cs</DependentUpon>
     </Compile>
     <Compile Include="frm_InstitutionWisePerson.cs">
       <SubType>Form</SubType>
@@ -152,8 +158,11 @@
     <EmbeddedResource Include="frm_DepartmentwiseBeds.resx">
       <DependentUpon>frm_DepartmentwiseBeds.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_distanceAddress.resx">
-      <DependentUpon>frm_distanceAddress.cs</DependentUpon>
+    <EmbeddedResource Include="frm_PersonUnderME.resx">
+      <DependentUpon>frm_PersonUnderME.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_Person_distanceAddress.resx">
+      <DependentUpon>frm_Person_distanceAddress.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_InstitutionWisePerson.resx">
       <DependentUpon>frm_InstitutionWisePerson.cs</DependentUpon>
