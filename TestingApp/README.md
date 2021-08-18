@@ -1,5 +1,5 @@
 # Diagram (Database Relationship diagram)
 
-![db](https://user-images.githubusercontent.com/57591240/125074228-4a01ba00-e0bd-11eb-8104-43a9d5010efa.png)
+![RD](https://user-images.githubusercontent.com/57591240/129855081-bf6620a9-4640-4410-8d65-3b8bbfd9b52f.png)
 
 
